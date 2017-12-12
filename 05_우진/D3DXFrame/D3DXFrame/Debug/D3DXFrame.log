@@ -1,0 +1,8 @@
+﻿  testScene.cpp
+c:\users\김우진\desktop\d3dxframe\d3dxframe\testscene.cpp(13): warning C4316: 'characterCtrl': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
+c:\users\김우진\desktop\d3dxframe\d3dxframe\singletonbase.h(22): warning C4316: 'cameraCtrl': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
+  c:\users\김우진\desktop\d3dxframe\d3dxframe\singletonbase.h(21): note: 클래스 템플릿 멤버 함수 'cameraCtrl *singletonBase<cameraCtrl>::getSingleton(void)'을(를) 컴파일하고 있습니다.
+  c:\users\김우진\desktop\d3dxframe\d3dxframe\testscene.cpp(85): note: 컴파일 중인 함수 템플릿 인스턴스화 'cameraCtrl *singletonBase<cameraCtrl>::getSingleton(void)'에 대한 참조를 확인하십시오.
+  skyBox.cpp
+  코드를 생성하고 있습니다...
+  D3DXFrame.vcxproj -> C:\Users\김우진\Desktop\D3DXFrame\Debug\D3DXFrame.exe
