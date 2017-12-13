@@ -73,7 +73,7 @@ void skyBox::render()
 {
 	D3DXMATRIXA16 skyWorld;
 	D3DXMatrixIdentity( &skyWorld );
-	D3DXMatrixScaling( &skyWorld, 400.0f, 400.0f, 400.0f );
+	D3DXMatrixScaling( &skyWorld, 400.0f, 400.0f, 600.0f );
 	DEVICE->SetRenderState( D3DRS_LIGHTING, false );
 	DEVICE->SetRenderState( D3DRS_CULLMODE, true );
 	DEVICE->SetTransform( D3DTS_WORLD, &skyWorld );

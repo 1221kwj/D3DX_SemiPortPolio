@@ -252,6 +252,11 @@ void SkinnedMesh::Render( Bone* pBone )
 		D3DXVECTOR3 vEye = D3DXVECTOR3( 0, 0, 0 );
 		D3DXVec3TransformCoord( &vEye, &vEye, &mInvView );
 
+		D3DXMATRIXA16 scaleTM;
+		D3DXMatrixIdentity( &scaleTM );
+		D3DXMatrixScaling( &scaleTM, 0.1, 0.1, 0.1 );
+		//DEVICE->SetTransform( D3DTS_WORLD, &scaleTM );
+
 		// for each palette
 		for ( DWORD dwAttrib = 0; dwAttrib < pBoneMesh->dwNumAttrGroups; ++dwAttrib )
 		{
@@ -263,7 +268,7 @@ void SkinnedMesh::Render( Bone* pBone )
 				{
 					m_pmWorkingPalette[ dwPalEntry ] =
 						pBoneMesh->pBoneOffsetMatrices[ dwMatrixIndex ] *
-						( *pBoneMesh->ppBoneMatrixPtrs[ dwMatrixIndex ] ) * worldTM;
+						( *pBoneMesh->ppBoneMatrixPtrs[ dwMatrixIndex ] ) * scaleTM * worldTM ;
 				}
 			}
 

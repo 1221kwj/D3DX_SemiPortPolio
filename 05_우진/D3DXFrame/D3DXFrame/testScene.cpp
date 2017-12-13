@@ -25,7 +25,7 @@ HRESULT testScene::init()
 
 	D3DXMATRIXA16 transTM;
 	D3DXMatrixIdentity(&transTM );
-	D3DXMatrixTranslation( &transTM, 0, 0, -240 );
+	D3DXMatrixTranslation( &transTM, 0, 0, -239.5 );
 
 	for each ( auto iter in mapGroupList_1 )
 	{
@@ -66,14 +66,14 @@ void testScene::release()
 void testScene::update()
 {
 
-	if ( ( *controller->GetPosition() ).z >= -239 )
+	if ( ( *controller->GetPosition() ).z > -241 )
 	{
 		for each ( auto iter in mapGroupList_1 )
 		{
 			controller->update( iter );
 		}
 	}
-	else if (( *controller->GetPosition() ).z <= -239 )
+	if (( *controller->GetPosition() ).z <= -239 )
 	{
 		for each ( auto iter in mapGroupList_2 )
 		{
@@ -112,5 +112,7 @@ void testScene::render()
 	for each ( auto iter in mapGroupList_1 ) iter->render();
 	for each ( auto iter in mapGroupList_2 ) iter->render();
 
+
+	
 	SKINNEDMESHMANAGER->GetSkinnedMesh( "»ç¶÷" )->UpdateAndRender();
 }
