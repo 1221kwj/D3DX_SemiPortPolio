@@ -5,6 +5,7 @@
 //   ## 추가할 씬의 헤더 ##
 //=============================
 #include "testScene.h"
+#include "IntroLoadingScene.h"
 
 MainGameManager:: MainGameManager()	{}
 MainGameManager::~MainGameManager() {}
@@ -16,7 +17,8 @@ HRESULT MainGameManager::init( void )
 	WireFrameOn = false;
 
 	SCENEMANAGER->addScene( "test", new testScene );
-	SCENEMANAGER->changeScene( "test" );
+	SCENEMANAGER->addScene( "load", new IntroLoadingScene);
+	SCENEMANAGER->changeScene( "load" );
 
 	DEVICE->SetRenderState( D3DRS_NORMALIZENORMALS, true );
 	DEVICE->SetRenderState( D3DRS_LIGHTING, false );
@@ -91,3 +93,4 @@ void MainGameManager::render( void )
 	//--------------------------------------
 	DEVICEMANAGER->renderEnd();		
 }
+

@@ -1,5 +1,7 @@
 #pragma once
 #include "gameNode.h"
+#include "Loading.h"
+
 //===========================
 //	## Class 선언 부분 ##
 //===========================
@@ -24,7 +26,7 @@
 class IntroLoadingScene : public gameNode
 {
 private:
-
+	Loading* loading;
 public:
 	IntroLoadingScene();
 	~IntroLoadingScene();

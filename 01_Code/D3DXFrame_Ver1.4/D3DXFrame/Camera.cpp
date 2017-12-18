@@ -46,6 +46,23 @@ void Camera::init()
 
 void Camera::update()
 {
+
+	GetCursorPos(&CurMousePos);
+
+	fLocalRotX -= (CurMousePos.y - PrevMousePos.y) * MOUSEAPM;
+	fLocalRotY += (CurMousePos.x - PrevMousePos.x) * MOUSEAPM;
+
+	if (fLocalRotX <= -D3DX_PI * 0.4 - D3DX_16F_EPSILON)
+	{
+		fLocalRotX = -D3DX_PI * 0.4 - D3DX_16F_EPSILON;
+	}
+	if (fLocalRotX >= D3DX_PI * 0.4 + D3DX_16F_EPSILON)
+	{
+		fLocalRotX = D3DX_PI * 0.4 + D3DX_16F_EPSILON;
+	}
+
+	SetCursorPos(PrevMousePos.x, PrevMousePos.y);
+
 	eyeVector = D3DXVECTOR3( 0.0f, fViewDistX, fViewDistZ );
 
 	D3DXMATRIX matLocalRotX, matLocalRotY, matLocalRot;
@@ -73,31 +90,6 @@ void Camera::update()
 	);
 
 	DEVICE->SetTransform( D3DTS_VIEW, &viewMatrix );
-}
-
-void Camera::WndProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
-{
-	switch ( msg )
-	{
-	case WM_MOUSEMOVE:
-		GetCursorPos( &CurMousePos );
-
-		fLocalRotX += ( CurMousePos.y - PrevMousePos.y) * MOUSEAPM;
-		fLocalRotY += ( CurMousePos.x - PrevMousePos.x) * MOUSEAPM;
-
-		if ( fLocalRotX <= -D3DX_PI * 0.4 - D3DX_16F_EPSILON )
-		{
-			fLocalRotX = -D3DX_PI * 0.4 - D3DX_16F_EPSILON;
-		}
-		if ( fLocalRotX >= D3DX_PI * 0.4 + D3DX_16F_EPSILON )
-		{
-			fLocalRotX = D3DX_PI * 0.4 + D3DX_16F_EPSILON;
-		}
-
-		SetCursorPos( PrevMousePos.x, PrevMousePos.y );
-
-		break;
-	}
 }
 
 void Camera::CameraSetting( D3DXVECTOR3 pEye, D3DXVECTOR3 pLookAt, D3DXVECTOR3 pUp )

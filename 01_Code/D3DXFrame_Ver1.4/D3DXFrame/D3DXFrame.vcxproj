@@ -152,6 +152,7 @@
     <ClInclude Include="commonMacroFunction.h" />
     <ClInclude Include="D3DXFrame.h" />
     <ClInclude Include="deviceManager.h" />
+    <ClInclude Include="enemy.h" />
     <ClInclude Include="fontManager.h" />
     <ClInclude Include="FrustumCulling.h" />
     <ClInclude Include="gameNode.h" />
@@ -159,12 +160,15 @@
     <ClInclude Include="Group.h" />
     <ClInclude Include="IntroLoadingScene.h" />
     <ClInclude Include="keyManager.h" />
+    <ClInclude Include="Loading.h" />
     <ClInclude Include="MainGameManager.h" />
     <ClInclude Include="MaterialTexture.h" />
+    <ClInclude Include="NoBoneMesh.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="OBJLoader.h" />
     <ClInclude Include="OBJLoaderManager.h" />
+    <ClInclude Include="Pyramid.h" />
     <ClInclude Include="randomFunction.h" />
     <ClInclude Include="RayCtrl.h" />
     <ClInclude Include="resource.h" />
@@ -191,6 +195,7 @@
     <ClCompile Include="CharCtrl.cpp" />
     <ClCompile Include="D3DXFrame.cpp" />
     <ClCompile Include="deviceManager.cpp" />
+    <ClCompile Include="enemy.cpp" />
     <ClCompile Include="fontManager.cpp" />
     <ClCompile Include="FrustumCulling.cpp" />
     <ClCompile Include="gameNode.cpp" />
@@ -198,12 +203,15 @@
     <ClCompile Include="Group.cpp" />
     <ClCompile Include="IntroLoadingScene.cpp" />
     <ClCompile Include="keyManager.cpp" />
+    <ClCompile Include="Loading.cpp" />
     <ClCompile Include="MainGameManager.cpp" />
     <ClCompile Include="MaterialTexture.cpp" />
+    <ClCompile Include="NoBoneMesh.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="OBJLoader.cpp" />
     <ClCompile Include="OBJLoaderManager.cpp" />
+    <ClCompile Include="Pyramid.cpp" />
     <ClCompile Include="RayCtrl.cpp" />
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="SkinnedMesh.cpp" />

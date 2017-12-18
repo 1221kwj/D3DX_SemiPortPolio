@@ -14,5 +14,6 @@ public:
 	virtual void release( void );
 	virtual void update( void );
 	virtual void render( void );
+	//virtual void MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam);
 };
 

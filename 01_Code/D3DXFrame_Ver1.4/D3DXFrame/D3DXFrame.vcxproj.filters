@@ -88,6 +88,9 @@
     <Filter Include="00_D3DXFramework\14_CharacterCtrl">
       <UniqueIdentifier>{bf229e59-baa3-46dd-98c7-f12ab464b854}</UniqueIdentifier>
     </Filter>
+    <Filter Include="00_D3DXFramework\15_ENEMY">
+      <UniqueIdentifier>{9bce3e3c-6028-4603-9454-0949c03d336e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -204,6 +207,18 @@
     <ClInclude Include="CharCtrl.h">
       <Filter>00_D3DXFramework\14_CharacterCtrl</Filter>
     </ClInclude>
+    <ClInclude Include="Pyramid.h">
+      <Filter>00_D3DXFramework\07_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>00_D3DXFramework\15_ENEMY</Filter>
+    </ClInclude>
+    <ClInclude Include="NoBoneMesh.h">
+      <Filter>00_D3DXFramework\13_XFileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Loading.h">
+      <Filter>00_D3DXFramework\10_Loading</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -304,6 +319,18 @@
     </ClCompile>
     <ClCompile Include="CharCtrl.cpp">
       <Filter>00_D3DXFramework\14_CharacterCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="Pyramid.cpp">
+      <Filter>00_D3DXFramework\07_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>00_D3DXFramework\15_ENEMY</Filter>
+    </ClCompile>
+    <ClCompile Include="NoBoneMesh.cpp">
+      <Filter>00_D3DXFramework\13_XFileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Loading.cpp">
+      <Filter>00_D3DXFramework\10_Loading</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

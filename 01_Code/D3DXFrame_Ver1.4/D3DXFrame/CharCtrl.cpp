@@ -35,20 +35,20 @@ void CharCtrl::update( SkinnedMesh* pMesh )
 
 	if ( KEYMANAGER->isStayKeyDown('A' ))
 	{
-		position = position - xDirection;
+		position = position - xDirection * 0.5f;
 	}
 	else if ( KEYMANAGER->isStayKeyDown( 'D' ) )
 	{
-		position = position + xDirection;
+		position = position + xDirection * 0.5f;
 	}
 	
 	if ( KEYMANAGER->isStayKeyDown( 'W' ) )
 	{
-		position = position + zDirection;
+		position = position + zDirection * 0.5f;
 	}
 	else if ( KEYMANAGER->isStayKeyDown( 'S' ) )
 	{
-		position = position - zDirection;
+		position = position - zDirection * 0.5f;
 	}
 
 	D3DXMATRIX pMat;

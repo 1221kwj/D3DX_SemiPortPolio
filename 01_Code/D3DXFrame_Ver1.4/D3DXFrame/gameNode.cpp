@@ -62,8 +62,7 @@ void gameNode::render( void )
 
 LRESULT gameNode::MainProc( HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam )
 {
-	CAMERAMANAGER->WndProc( hWnd, iMessage, wParam, lParam );
-
+	
 	switch ( iMessage )
 	{
 		case WM_MOUSEMOVE:

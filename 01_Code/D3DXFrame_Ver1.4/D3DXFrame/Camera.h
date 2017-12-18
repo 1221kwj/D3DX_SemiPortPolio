@@ -30,7 +30,6 @@ public:
 	void init();
 	void update();
 
-	void WndProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam );
 	void CameraSetting( D3DXVECTOR3 pEye, D3DXVECTOR3 pLookAt, D3DXVECTOR3 pUp );
 
 	GETSET( float, fLocalRotY, LocalRotY );

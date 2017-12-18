@@ -59,6 +59,8 @@ void SkinnedMesh::Load( const char * foldername, const char * filename )
 	std::string folder( foldername );
 	std::string fullpath = foldername + std::string( "\\" ) + filename;
 
+	fullName = fullpath;
+
 	AllocateHierarchy alloc;
 	alloc.SetFolder( folder );
 	alloc.SetDefaultPaletteSize( nPaletteSize );
@@ -205,11 +207,33 @@ void SkinnedMesh::SetupBoneMatrixPtrs( LPD3DXFRAME frame )
 
 void SkinnedMesh::UpdateAndRender()
 {
+	float deltaTime = TIMEMANAGER->getElapsedTime();
+
 	if ( animationController )
 	{
-		animationController->AdvanceTime( TIMEMANAGER->getElapsedTime(), NULL );
+		animationController->AdvanceTime(deltaTime, NULL );
 	}
-
+	//---------------------BLEND--------------------------------------------
+	if (passedBlendTime <= blendTime)
+	{
+		passedBlendTime += deltaTime;
+		if (passedBlendTime < blendTime)
+		{
+			float fWeight = passedBlendTime / blendTime;
+			//가중치를 넣어서 계산
+			animationController->SetTrackWeight(0, fWeight);
+			animationController->SetTrackWeight(1, 1 - fWeight);
+		}
+		else
+		{
+			//가중치를 넣어서 계산
+			animationController->SetTrackWeight(0, 1);
+			animationController->SetTrackWeight(1, 0);
+			//1번 트랙을 펄스 시킴
+			animationController->SetTrackEnable(1, false);
+		}
+	}
+	//----------------------------------------------------------------------
 	if ( root )
 	{
 		D3DXMATRIX matTrans, matRot, worldTM;
@@ -217,7 +241,8 @@ void SkinnedMesh::UpdateAndRender()
 		D3DXMatrixRotationAxis( &matRot, &D3DXVECTOR3(0, 1, 0), angle );
 
 		worldTM = matRot * matTrans;
-		
+		//로테이트 메트릭스를 가져와서 요긴하게 씁니다..
+		rotateMat = matRot;
 		Update( root, &worldTM );
 		Render( root );
 	}
@@ -327,6 +352,39 @@ void SkinnedMesh::SetAnimationIndex( int index )
 	animationController->SetTrackAnimationSet( 0, pAnimSet );
 	SAFE_RELEASE( pAnimSet );
 
+}
+//블렌딩 전용 
+void SkinnedMesh::SetAnimationIndex(int index, bool isBlend)
+{
+	//지나간 시간 초기화!!(중요함)
+	passedBlendTime = 0.0f;
+	//다음 애니메이션 셋
+	LPD3DXANIMATIONSET pNextAnimSet = nullptr;
+	animationController->GetAnimationSet(index, &pNextAnimSet);
+	//신호 -> 여기 셋애니메이션인덱스 -> 업데이트
+	if (isBlend)
+	{
+		//이전 애니메이션 셋
+		LPD3DXANIMATIONSET pPrevAniSet = nullptr;
+		//현재 애니메이션 넣어주기
+		animationController->GetTrackAnimationSet(0, &pPrevAniSet);
+
+		//weight를 설정해서 사용(중량감)
+		D3DXTRACK_DESC StTrackDesc;
+		//getTrackDesc 0, 1
+		//0 -> 0.0f , 1 -> 1,0f
+		animationController->GetTrackDesc(0, &StTrackDesc);
+		//0번 트랙에서 가져온 트랙데스크를 1번 트랙에다가 넣는다
+		animationController->SetTrackDesc(1, &StTrackDesc);
+
+		animationController->SetTrackWeight(0, 0);
+		animationController->SetTrackWeight(1, 1);
+
+		animationController->SetTrackAnimationSet(1, pPrevAniSet);
+	}
+
+	animationController->SetTrackAnimationSet(0, pNextAnimSet);
+	SAFE_RELEASE(pNextAnimSet);
 }
 
 void SkinnedMesh::Destroy()
